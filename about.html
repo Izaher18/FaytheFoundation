@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Faythe Brannon Foundation</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #fff8f5;
+      color: #333;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: coral;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #fff5f0;
+      margin-top: 20px;
+    }
+
+    nav {
+      background-color: #333;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: coral;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: coral;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: coral;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #222;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 15px 8px;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #444;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 60px;
+    }
+
+    .fade-slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 1.2s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    ul {
+      text-align: left;
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* breathing room below the main paragraph */
+    section .fade-slide-up p {
+      margin-bottom: 40px;
+    }
+
+    /* coral bar, transparent background, extra spacing */
+    blockquote {
+      border-left: 4px solid coral;
+      background: none;
+      margin: 40px auto;
+      padding: 10px 20px;
+      font-style: italic;
+      color: #555;
+      text-align: left;
+    }
+
+    blockquote footer {
+      margin-top: 8px;
+      font-style: normal;
+      font-weight: bold;
+      text-align: right;
+      color: #333;
+      background: none;
+      border-top: none;
+    }
+
+    blockquote {
+      opacity: 0;
+      transform: translateY(20px);
+      /* make the fade‐in & lift last 1s instead of 0.6s */
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    blockquote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>The Faythe Marie Brannon Foundation</h1>
+      <p>Empowering Youth, Honoring Legacy</p>
+      <p class="quote">“You don't go where the path may lead you. Go where there is no path and leave a trail.” – Faythe Marie Brannon</p>
+    </header>
+
+    <nav>
+      <a href="index.html">Back to Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="fundraising.html">Fundraising Events</a>
+      <a href="board.html">Board of Directors</a>
+    </nav>
+
+    <section>
+      <div class="fade-slide-up">
+        <h2>About Us</h2>
+        <p>
+          The Faythe Marie Brannon Foundation was established in 2024 in honor of the incomparable Faythe Marie Brannon. Ms. Brannon dedicated her life to education and empowering youth. She was a light that shined brightly to all who knew her and her passion for the youth transformed numerous lives. The Foundation strives to support and enrich the lives of youth via educational and financial resources, as well as the social-emotional skills they need to succeed. Your generous support will ensure success for generations of youth!
+        </p>
+
+        <!-- newly curated quotes -->
+        <blockquote>
+          “I’m so saddened by this information. I met Faythe through my being the regional support person for the central region of CSTA. I loved talking with her in the Zoom meetings, and seeing the group at the Chicago summit in 2022. You’ll always be in my heart down here in Texas. My sincerest condolences for Faythe’s friends and family.”
+          <footer>— Henry Ramirez</footer>
+        </blockquote>
+
+        <blockquote>
+          “I am really lost for words, this is really heartbreaking. Anybody that knows Ms. Faythe Brannon knew that she was such a kind-hearted spirit. She inspired many of her students to reach our full potential and just be gracious. Wow she will truly be missed. We love you, Ms. Brannon.”
+          <footer>— Angelica Bates</footer>
+        </blockquote>
+
+        <blockquote>
+          “Whenever I saw Faythe, she always had that SMILE! Condolences to the Brannon family.”
+          <footer>— Steven Maxwell</footer>
+        </blockquote>
+
+        <blockquote>
+          “Sending love and light to Miss Faythe’s family! May God be the source of your comfort during this time.”
+          <footer>— Shawna Hall-Neely</footer>
+        </blockquote>
+
+        <blockquote>
+          “I met Faythe through friends at SIU. She was a kind soul who was great to have chats at parties and get togethers. My condolences to the family.”
+          <footer>— Robert Tolnai</footer>
+        </blockquote>
+
+        <blockquote>
+          “Ms. Brannon, words can never describe my gratitude for you. Thank you for coming into my life and being the mentor I never knew I needed—the one who really gives me tough love. I will cherish these memories forever.”
+          <footer>— Dechant Kemp</footer>
+        </blockquote>
+
+        <blockquote>
+          “To the Family of Faythe, please accept our most heartfelt sympathies for your loss. She will be missed by her Palm Springs, CA family.”
+          <footer>— The Balanay Family</footer>
+        </blockquote>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 The Faythe Marie Brannon Foundation. All rights reserved.</p>
+  </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const quotes = document.querySelectorAll('blockquote');
+  const obs = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  quotes.forEach(q => obs.observe(q));
+});
+
+</script>
+</body>
+</html>

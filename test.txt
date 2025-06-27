@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Faythe Marie Brannon Foundation</title>
+  <style>
+    :root {
+      --primary: coral;
+      --secondary: #fff8f5;
+      --dark: #222;
+      --text: #333;
+      --light-text: #666;
+    }
+
+    /* Reset + Base */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--secondary);
+      color: var(--text);
+    }
+
+    /* Header */
+    header {
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      transition: all 0.4s ease;
+      height: 100vh; /* Full screen height initially */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 20px;
+      margin-bottom: 20px; /* Added margin for separation from next sections */
+    }
+
+    header.shrink {
+      height: 220px;
+      padding: 30px 20px;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      transition: font-size 0.4s ease;
+    }
+
+    header.shrink h1 {
+      font-size: 2.8rem;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin: 5px 0;
+      transition: font-size 0.4s ease;
+    }
+
+    header.shrink p {
+      font-size: 1rem;
+    }
+
+    .quote {
+      font-style: italic;
+      color: white;
+      margin-top: 20px;
+      transition: opacity 0.4s ease;
+    }
+
+    header.shrink .quote {
+      opacity: 0.7;
+    }
+
+    #floating-quotes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating-quote {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0;
+      animation: fadeInOut 8s ease-in-out forwards;
+      max-width: 250px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+
+    /* Navigation */
+    nav {
+      background: #333;
+      padding: 12px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Section Content Layout */
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease-out;
+      margin-top: 50px;  /* Ensures section content doesn't get hidden by the header */
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-content {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .text-box {
+      flex: 1;
+      max-width: 60%;
+    }
+
+    .image-box {
+      flex: 1.2;
+      max-width: 50%;
+    }
+
+    .image-box img {
+      width: 125%;
+      height: auto;
+      border-radius: 10px;
+      margin: 0 auto;
+      display: block;
+      margin-right: 10px;
+    }
+
+    .image-box.carousel {
+      transform: translateX(20px);
+    }
+
+    @media (max-width: 768px) {
+      .section-content {
+        flex-direction: column;
+      }
+
+      .text-box, .image-box {
+        max-width: 100%;
+      }
+
+      .image-box.carousel {
+        transform: none;
+        margin-left: 0;
+      }
+    }
+
+    /* Carousel */
+    .carousel {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-images {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      overflow: hidden;
+      padding-right: 10px;
+    }
+
+    .carousel-images img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      border-radius: 10px;
+    }
+
+    .carousel-images img.active {
+      display: block;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      font-size: 24px;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    /* PayPal Donation */
+    .paypal-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .paypal-button input[type="image"] {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    .paypal-button input[type="image"]:hover {
+      transform: scale(1.4);
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Faythe Marie Brannon Foundation</h1>
+    <p>Empowering Youth, Honoring Legacy</p>
+    <p class="quote">“You don't go where the path may lead you. Go where there is no path and leave a trail.” – Faythe Marie Brannon</p>
+    <p>Please scroll down</p>
+    <div id="floating-quotes"></div>
+  </header>
+
+  <nav>
+    <a href="#about">About Faythe</a>
+    <a href="#scholarships">Scholarships</a>
+    <a href="#donation">Donate</a>
+    <a href="contact.html">Contact</a>
+    <a href="fundraising.html">Fundraising</a>
+    <a href="board.html">Board</a>
+  </nav>
+
+  <section id="about">
+    <div class="section-content">
+      <div class="text-box">
+        <h2>Her Legacy</h2>
+        <p>Faythe Marie Brannon was more than just an educator, she was a light in every room she entered. As a dedicated computer science teacher, she impacted the lives of countless students and educators in Chicago. With degrees from Southern Illinois University and two master’s in education and computer science, Faythe committed herself to uplifting young minds through innovative teaching and fierce advocacy for inclusion in STEM.</p>
+        <p>She served as President of the Chicago chapter of the Computer Science Teachers Association (CSTA), led professional learning initiatives across the country, and coached a nationally recognized robotics team at Bowen High School. In 2022, her efforts were instrumental in Bowen receiving the AP Computer Science Female Diversity Award from the College Board. A testament to her commitment to equity in tech education.</p>
+        <p>Beyond her accolades, Faythe’s true impact lived in the hearts of those who knew her. She was a loving mentor and mother figure, especially to the students who needed her most. Her natural warmth and contagious smile made her unforgettable. She championed her people fiercely, uplifting her community not only in classrooms but through every act of kindness, support, and leadership. Faythe Brannon was a brilliant educator, an unstoppable force, and a beautiful soul whose legacy will continue to inspire generations to come.</p>
+        <p>In her honor, the Faythe Marie Brannon Foundation was established to continue her mission of empowering youth through education and community support.</p>        
+      </div>
+      <div class="image-box">
+        <img src="logo.png" alt="Faythe Brannon">
+      </div>
+    </div>
+  </section>
+
+  <section id="scholarships">
+    <div class="section-content">
+      <div class="text-box">
+        <h2>Scholarships</h2>
+        <p>In honor of Ms. Brannon’s enduring legacy, The Faythe Marie Brannon Foundation is proud to award two $1,000 scholarships to graduating seniors at Bowen High School and Harlan High School. The two institutions where Faythe passionately taught and mentored for many years. These scholarships are more than financial assistance; they represent a commitment to lifting up the next generation just as Faythe did every single day.</p>
+        
+        <p>We believe that every young person deserves a chance to rise to be seen and supported. Faythe made it her mission to open doors for others, especially those who came from underrepresented backgrounds in tech and academia. It is in that same spirit that we offer this scholarship.</p>
+        <p>
+          The inaugural Foundation scholarships were issued to a deserving senior at both Bowen High School and Harlan High School – two of the high schools close to Ms. Brannon's heart. Each senior was awarded a $1,000 scholarship from the Foundation.
+        </p>
+        <ul>
+          <li>
+            <strong>Jeremiah Carter</strong> (Bowen HS class of 2025) graduated at the top of his class as the Valedictorian and was among the top five scholarship recipients of his class. Mr. Carter earned a 4.0 grade point average and is looking forward to furthering his education and athletic pursuits in college.
+          </li>
+          <li>
+            <strong>Jameel Patterson</strong> (Harlan HS class of 2025) graduated second in his class with a 3.7 grade point average. Jameel excelled in various varsity sports in high school and is excited to pursue his undergraduate degree at St. Xavier University.
+          </li>
+        </ul>
+        
+        <ul>
+          <li>Must be a senior at Bowen or Harlan High School</li>
+          <li>Demonstrate leadership, resilience, and a passion for learning</li>
+          <li>Applications due: April 20, 2025</li>
+        </ul>
+        <p>Email: <a href="mailto:scholarships@faythebrannonfoundation.org">scholarships@faythebrannonfoundation.org</a></p>
+      </div>
+      <div class="image-box carousel">
+        <div class="carousel-images">
+          <img src="faythe.jpeg" alt="Scholarship Image 1" class="active">
+          <img src="p1.jpg" alt="Scholarship Image 2">
+          <img src="p3.jpg" alt="Scholarship Image 3">
+        </div>
+        <button class="carousel-btn prev">&#10094;</button>
+        <button class="carousel-btn next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="donation">
+    <h2>Make a Donation</h2>
+    <p>Every donation helps us honor Faythe’s legacy by funding scholarships and youth programs in Chicago. Thank you for your support.</p>
+  
+    <h3>Ways to Give</h3>
+    <ul>
+      <li><strong>Zelle:</strong> Send to Alicia Canario (linked to phone/email)</li>
+      <li><strong>Venmo:</strong> @Alicia-Canario</li>
+      <li><strong>Check:</strong> Payable to "Regina Brannon"<br>
+          Mailing Address: The Faythe Marie Brannon Foundation, c/o Regina Brannon, [Insert Address]</li>
+    </ul>
+  
+    <h3>Donate Online via PayPal</h3>
+    <p>Click the button below to donate securely via PayPal.</p>
+    <div class="paypal-button">
+      <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <input type="hidden" name="business" value="XTP7Q44QJ5FZJ" />
+        <input type="hidden" name="no_recurring" value="1" />
+        <input type="hidden" name="item_name" value="For the Faythe Marie Brannon Foundation" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" 
+               border="0" name="submit" title="PayPal - The safer, easier way to pay online!" 
+               alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+      </form>
+    </div>
+  
+    <p>Email donation questions to: <a href="mailto:donations@faythebrannonfoundation.org">donations@faythebrannonfoundation.org</a></p>
+  </section>
+
+  <footer>
+    <p style="text-align: center; width: 100%;">
+  © 2025 The Faythe Marie Brannon Foundation. All rights reserved.
+</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const quoteContainer = document.getElementById('floating-quotes');
+      const quoteList = [
+        "“”",
+        "“An adventurer of technological realms...”",
+        "“She enkindled us all with her passionate spirit, transforming obstacles into opportunities for growth and learning.”",
+        "“The quintessential Black woman of excellence, refused to cut corners, never settled for good enough, thrived on consistency, and made sure to come through on her word.”",
+        "“She was a gem of a person and a fabulous teacher.”",
+        "“The spark behind countless success stories.”",
+        "“Her legacy is one of empowerment and love.”",
+        "“The epitome of an educator”",
+        "“A trailblazer in tech education.”",
+      ];
+      
+      let quoteInterval = null;
+
+      function createFloatingQuote(text) {
+        const quote = document.createElement('div');
+        quote.className = 'floating-quote';
+        quote.textContent = text;
+
+        // Set the `top` position to start below the header (accounting for header height)
+        const headerHeight = document.querySelector('header').offsetHeight;
+        quote.style.top = Math.random() * (window.innerHeight - headerHeight - 50) + headerHeight + 'px'; // Ensures quotes don't overlap header
+
+        // Set the `left` position
+        quote.style.left = Math.random() * 80 + 10 + '%'; // Random left position (10% to 90% of the screen width)
+
+        quoteContainer.appendChild(quote);
+        setTimeout(() => quote.remove(), 8000);
+      }
+
+      function startQuotes() {
+        if (quoteInterval) return;
+        quoteInterval = setInterval(() => {
+          const txt = quoteList[Math.floor(Math.random() * quoteList.length)];
+          createFloatingQuote(txt);
+        }, 3000);
+      }
+
+      function stopQuotes() {
+        if (!quoteInterval) return;
+        clearInterval(quoteInterval);
+        quoteInterval = null;
+        quoteContainer.innerHTML = '';
+      }
+
+      // Start floating quotes initially
+      startQuotes();
+
+      // Shrink Header & Toggle Quotes
+      const header = document.querySelector("header");
+      let isScrolling = false;
+      window.addEventListener("scroll", () => {
+        if (!isScrolling) {
+          isScrolling = true;
+          requestAnimationFrame(() => {
+            const shrunk = window.scrollY > 50;
+            header.classList.toggle("shrink", shrunk);
+            if (shrunk) {
+              stopQuotes();
+            } else {
+              setTimeout(() => {
+                if (!header.classList.contains("shrink")) {
+                  startQuotes();
+                }
+              }, 1000);
+            }
+            isScrolling = false;
+          });
+        }
+      });
+
+      // Section Fade-in Animation
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(sec => observer.observe(sec));
+
+      // Carousel functionality (next and prev buttons)
+      const imgs = document.querySelectorAll('.carousel-images img');
+      let idx = 0;
+
+      function showImage(i) {
+        imgs.forEach((img, j) => img.classList.toggle('active', j === i));
+      }
+
+      function nextImage() {
+        idx = (idx + 1) % imgs.length;
+        showImage(idx);
+      }
+
+      function prevImage() {
+        idx = (idx - 1 + imgs.length) % imgs.length;
+        showImage(idx);
+      }
+
+      document.querySelector('.carousel-btn.next').addEventListener('click', nextImage);
+      document.querySelector('.carousel-btn.prev').addEventListener('click', prevImage);
+      setInterval(nextImage, 4000);  // Auto-slide every 4 seconds
+    });
+  </script>
+</body>
+</html>

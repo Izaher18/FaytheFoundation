@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Board of Directors | Faythe Brannon Foundation</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+    body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #fff8f5;
+    color: #333;
+    }
+
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background-color: coral;
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+  }
+
+  .quote {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #fff5f0;
+    margin-top: 10px;
+  }
+
+  nav {
+    background-color: #333;
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: coral;
+  }
+
+  section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex: 1;
+  }
+
+  h2 {
+    color: coral;
+  }
+
+  a {
+    color: coral;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #222;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #444;
+  }
+
+  footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+  }
+
+  section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  /* Fixing the alignment issue */
+  .team-member {
+    display: flex;
+    align-items: center; /* Vertically align image and text */
+    margin-bottom: 150px;  /* Increased bottom margin for more space */
+  }
+
+  .team-member img {
+    width: 200px;  /* Increased image size */
+    height: 200px; /* Increased image size */
+    border-radius: 50%;
+    margin-right: 30px; /* Increased space between image and text */
+  }
+
+  .team-member h3 {
+    margin: 0;
+    font-size: 1.8rem; /* Slightly larger font for names */
+  }
+
+  .team-member p {
+    margin: 5px 0;
+    font-style: italic;
+    color: #666;
+  }
+
+  .team-member .role {
+    font-weight: bold;
+  }
+
+  .team-member {
+  opacity: 0;  /* Make it invisible initially */
+  transform: translateY(20px);  /* Start off slightly below */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+}
+
+/* When the team member section comes into view */
+.team-member.visible {
+  opacity: 1;  /* Make it visible */
+  transform: translateY(0);  /* Bring it to its original position */
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>The Faythe Marie Brannon Foundation</h1>
+      <p>Empowering Youth, Honoring Legacy</p>
+      <p class="quote">“You don't go where the path may lead you. Go where there is no path and leave a trail.” – Faythe Marie Brannon</p>
+    </header>
+
+    <nav>
+      <a href="index.html">Back to Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="fundraising.html">Fundraising</a>
+    </nav>
+
+    <section>
+      <h2>Meet Our Amazing Team!</h2>
+      <p style="text-align: center;">Our team of dedicated individuals works tirelessly behind the scenes to fulfill the mission of the Faythe Marie Brannon Foundation. Meet the people who make it all possible:</p>
+
+      <!-- Team Members Section -->
+      <div class="team-member">
+        <img src="headshot.jpeg" alt="Team Member 1">
+        <div>
+          <h3>Alicia Brannon Canario</h3>
+          <p class="role">President</p>
+          <p>Alicia leads the foundation with vision and dedication, honoring her sister's legacy by empowering youth and fostering educational opportunities.</p>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <img src="team-member2.jpg" alt="Team Member 2">
+        <div>
+          <h3>Christine Brannon-Dortch</h3>
+          <p class="role">Chief Financial Officer</p>
+          <p>Christine oversees the foundation’s finances, ensuring transparency and sustainability in support of our mission and programs.</p>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <img src="team-member3.jpg" alt="Team Member 3">
+        <div>
+          <h3>Kimberly Brannon-Sibley</h3>
+          <p class="role">Secretary</p>
+          <p>Kimberly manages communications and records, helping maintain strong organizational structure and effective outreach.</p>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <img src="team-member3.jpg" alt="Team Member 3">
+        <div>
+          <h3>Fred Jones</h3>
+          <p class="role">Secretary</p>
+          <p>Fred supports the board with his organizational skills and commitment to the foundation’s goals, ensuring smooth operations.</p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 The Faythe Marie Brannon Foundation. All rights reserved.</p>
+  </footer>
+
+    <!-- JavaScript for fade-in effect -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Select all team member sections
+      const teamMembers = document.querySelectorAll(".team-member");
+
+      // Intersection Observer callback function
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add 'visible' class to trigger fade-in when the section is in view
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);  // Stop observing once it's visible
+          }
+        });
+      }, { threshold: 1 });  // Trigger when 20% of the element is in view
+
+      // Observe each team member
+      teamMembers.forEach(member => observer.observe(member));
+    });
+  </script>
+</body>
+</html>

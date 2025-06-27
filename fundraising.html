@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fundraising | Faythe Brannon Foundation</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #fff8f5;
+      color: #333;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: coral;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+
+    .quote {
+      font-style: italic;
+      color: white;
+      margin-top: 20px;
+    }
+
+    nav {
+      background-color: #333;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: coral;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      color: coral;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .coming-soon {
+      font-size: 1.1rem;
+      color: #444;
+      animation: pulse 1.5s infinite alternate;
+      margin-bottom: 25px;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+
+    .signup-box {
+      margin-top: 30px;
+    }
+
+    .signup-box p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .signup-box form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .signup-box input[type="email"] {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      min-width: 250px;
+    }
+
+    .signup-box button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: coral;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .signup-box button:hover {
+      background-color: #e65c00;
+    }
+
+    #form-response {
+      margin-top: 15px;
+      display: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 60px;
+    }
+
+    /* Fade-slide-up animation */
+    .fade-slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 1.2s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>The Faythe Marie Brannon Foundation</h1>
+      <p>Empowering Youth, Honoring Legacy</p>
+      <p class="quote">“You don't go where the path may lead you. Go where there is no path and leave a trail.” – Faythe Marie Brannon</p>
+    </header>
+
+    <nav>
+      <a href="index.html">Back to Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="Board.html">Board of Directors</a>
+    </nav>
+
+    <section>
+      <h2 class="fade-slide-up">Fundraising Opportunities</h2>
+      <p class="coming-soon fade-slide-up">Coming soon — keep an eye out!</p>
+      <p class="fade-slide-up">We're working on launching our first fundraising campaign soon.</p>
+      <p class="fade-slide-up">Please check back regularly, follow us on social media, or join our mailing list to stay updated!</p>
+
+      <div class="signup-box fade-slide-up">
+        <p><strong>Stay in the loop — join our mailing list:</strong></p>
+        <form id="signup-form">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit">Notify Me</button>
+        </form>
+        <p id="form-response"></p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 The Faythe Marie Brannon Foundation. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("signup-form");
+      const responseMsg = document.getElementById("form-response");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const data = new FormData(form);
+
+        const res = await fetch("https://formspree.io/f/xgvkdqwg", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: data
+        });
+
+        if (res.ok) {
+          form.reset();
+          responseMsg.style.display = "block";
+          responseMsg.style.color = "green";
+          responseMsg.textContent = "Thank you for signing up! You’ll hear from us soon.";
+        } else {
+          responseMsg.style.display = "block";
+          responseMsg.style.color = "red";
+          responseMsg.textContent = "Oops! Something went wrong. Please try again later.";
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
