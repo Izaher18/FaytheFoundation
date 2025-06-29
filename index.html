@@ -194,6 +194,18 @@
         transform: none;
         margin-left: 0;
       }
+
+      .image-box.carousel .carousel-images {
+      height: auto;             /* let height grow to aspect ratio */
+      overflow: visible;        /* show the full image */
+    }
+      .image-box.carousel .carousel-images img {
+      width: 100% !important;   /* override the 125% */
+      height: auto !important;  /* keep aspect ratio */
+      position: relative;       /* cancel absolute positioning */
+      left: 0;                  /* reset any offsets */
+    }
+
     }
 
     /* Carousel */
