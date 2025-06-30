@@ -122,7 +122,7 @@
   .team-member {
     display: flex;
     align-items: center; /* Vertically align image and text */
-    margin-bottom: 150px;  /* Increased bottom margin for more space */
+    margin-bottom: 130px;  /* Increased bottom margin for more space */
   }
 
   .team-member img {
@@ -238,7 +238,7 @@
             observer.unobserve(entry.target);  // Stop observing once it's visible
           }
         });
-      }, { threshold: 1 });  // Trigger when 20% of the element is in view
+      }, { threshold: .1 });  // Trigger when 20% of the element is in view
 
       // Observe each team member
       teamMembers.forEach(member => observer.observe(member));
