@@ -119,11 +119,12 @@
   }
 
   /* Fixing the alignment issue */
-  .team-member {
-    display: flex;
-    align-items: center; /* Vertically align image and text */
-    margin-bottom: 130px;  /* Increased bottom margin for more space */
-  }
+.team-member {
+  width: 100%;
+  max-width: 700px; /* keeps it centered and tidy */
+  margin-bottom: 50px;
+  text-align: left;
+}
 
   .team-member img {
     width: 200px;  /* Increased image size */
@@ -181,7 +182,6 @@
 
       <!-- Team Members Section -->
       <div class="team-member">
-        <img src="headshot.jpeg" alt="Team Member 1">
         <div>
           <h3>Alicia Brannon Canario</h3>
           <p class="role">President</p>
@@ -190,7 +190,6 @@
       </div>
 
       <div class="team-member">
-        <img src="team-member2.jpg" alt="Team Member 2">
         <div>
           <h3>Christine Brannon-Dortch</h3>
           <p class="role">Chief Financial Officer</p>
@@ -199,7 +198,6 @@
       </div>
 
       <div class="team-member">
-        <img src="team-member3.jpg" alt="Team Member 3">
         <div>
           <h3>Kimberly Brannon-Sibley</h3>
           <p class="role">Secretary</p>
@@ -208,7 +206,6 @@
       </div>
 
       <div class="team-member">
-        <img src="team-member3.jpg" alt="Team Member 3">
         <div>
           <h3>Fred Jones</h3>
           <p class="role">Secretary</p>
