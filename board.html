@@ -119,18 +119,32 @@
   }
 
   /* Fixing the alignment issue */
-.team-member {
-  width: 100%;
-  max-width: 700px; /* keeps it centered and tidy */
-  margin-bottom: 50px;
-  text-align: left;
-}
+  .team-member {
+    width: 100%;
+    max-width: 700px; /* keeps it centered and tidy */
+    margin-bottom: 50px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .team-member:first-of-type {
+    margin-top: 20px; /* add whitespace below section intro */
+  }
 
   .team-member img {
-    width: 200px;  /* Increased image size */
-    height: 200px; /* Increased image size */
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    margin-right: 30px; /* Increased space between image and text */
+    margin-right: 0;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  /* Fine-tune Fred's photo framing */
+  .team-member img.fred-photo {
+    object-position: center top;
   }
 
   .team-member h3 {
@@ -148,17 +162,34 @@
     font-weight: bold;
   }
 
-  .team-member {
-  opacity: 0;  /* Make it invisible initially */
-  transform: translateY(20px);  /* Start off slightly below */
-  transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
-}
+  .team-member > div {
+    flex: 1;
+    margin-top: 30px; /* drop text slightly to align with headshots */
+  }
 
-/* When the team member section comes into view */
-.team-member.visible {
-  opacity: 1;  /* Make it visible */
-  transform: translateY(0);  /* Bring it to its original position */
-}
+  .team-member {
+    opacity: 0;  /* Make it invisible initially */
+    transform: translateY(20px);  /* Start off slightly below */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+  }
+
+  /* When the team member section comes into view */
+  .team-member.visible {
+    opacity: 1;  /* Make it visible */
+    transform: translateY(0);  /* Bring it to its original position */
+  }
+
+  @media (max-width: 768px) {
+    .team-member {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .team-member img {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -182,6 +213,7 @@
 
       <!-- Team Members Section -->
       <div class="team-member">
+        <img src="imgs/Alicia.jpeg" alt="Alicia Brannon Canario">
         <div>
           <h3>Alicia Brannon Canario</h3>
           <p class="role">President</p>
@@ -190,6 +222,7 @@
       </div>
 
       <div class="team-member">
+        <img src="imgs/Christine.jpeg" alt="Christine Brannon-Dortch">
         <div>
           <h3>Christine Brannon-Dortch</h3>
           <p class="role">Chief Financial Officer</p>
@@ -198,6 +231,7 @@
       </div>
 
       <div class="team-member">
+        <img src="imgs/Kimberly.jpeg" alt="Kimberly Brannon-Sibley">
         <div>
           <h3>Kimberly Brannon-Sibley</h3>
           <p class="role">Secretary</p>
@@ -206,6 +240,7 @@
       </div>
 
       <div class="team-member">
+        <img src="imgs/freddd.jpg" alt="Fred Jones" class="fred-photo">
         <div>
           <h3>Fred Jones</h3>
           <p class="role">Secretary</p>
